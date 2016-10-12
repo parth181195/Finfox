@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Store Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <img [src]="logo" alt=""/>
+    </ion-row>
+    <ion-row>
+      <p>
+        {{description}}
+      </p>
+    </ion-row>
+    <ion-row>
+        <div #map id="map"></div>
+    </ion-row>
+    <ion-row>
+      <button ion-button block (click)="openProductPage()">Explore Our Products</button>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

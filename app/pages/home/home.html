@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle id="#cart">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <ion-grid>
+    <ion-row>
+      <img src="images/logo-main.png" alt="" />
+    </ion-row>
+    <ion-row>
+      <p>
+        Northeast Building Supply offers a variety of products and services designed to meet the needs of building professionals and homeowners.
+      </p>
+    </ion-row>
+    <ion-row>
+      <button ion-button block (click)="stores()">Checkout our stores</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
