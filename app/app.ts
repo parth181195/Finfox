@@ -6,6 +6,7 @@ import { LoginPage } from './pages/login/login'
 import { OurStores } from './pages/ourStores/ourStores'
 import { ProductsPage } from './pages/products/products'
 import { MyCart } from './pages/myCart/myCart'
+import { OrdersPage } from './pages/orders/orders'
 import { ProductDetails } from './pages/productDetails/productDetails'
 
 @Component({
@@ -17,12 +18,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-    this.rootPage = ProductDetails;
+    this.rootPage = OrdersPage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Our Stores', component: OurStores },
-      { title: 'Orders', component: ProductDetails},
+      { title: 'Orders', component: OrdersPage},
     ];
 
     platform.ready().then(() => {
