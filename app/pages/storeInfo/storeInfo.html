@@ -18,7 +18,7 @@
         <div #map id="map"></div>
     </ion-row>
     <ion-row>
-      <button ion-button block (click)="openProductPage()">Explore Our Products</button>
+      <button ion-button block (click)="openProductPage()" *ngIf="hasStore">Explore Our Products</button>
     </ion-row>
 
   </ion-grid>

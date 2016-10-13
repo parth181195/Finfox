@@ -2,14 +2,18 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, ionicBootstrap } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { HomePage } from './pages/home/home';
-import { LoginPage } from './pages/login/login'
 import { OurStores } from './pages/ourStores/ourStores'
 import { ProductsPage } from './pages/products/products'
 import { MyCart } from './pages/myCart/myCart'
 import { ProductDetails } from './pages/productDetails/productDetails'
+import { Params } from './services/params';
+//
+// @NgModule({
+//   imports: [HttpModule]
+// })
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',
 })
 export class MyApp {
 
@@ -17,7 +21,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-    this.rootPage = MyCart;
+    this.rootPage = HomePage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -39,4 +43,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp, [Params]);
