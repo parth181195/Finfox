@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Params } from '../../services/params';
-import { Http } from '@angular/http';
+import { Http, HTTP_PROVIDERS } from '@angular/http';
+
 
 @Component({
   templateUrl: 'build/pages/Products/products.html',
-  providers : [Http]
+  providers : [HTTP_PROVIDERS]
 })
 export class ProductsPage {
 
@@ -21,6 +22,7 @@ export class ProductsPage {
   fetchProducts(page = 1){
 
   }
+
 
 
 }

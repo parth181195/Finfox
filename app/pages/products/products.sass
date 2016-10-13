@@ -1,10 +1,22 @@
 .products-page
   ion-content
-    ion-list
-      ion-item
+    position: relative
+    ion-list.products
+      ion-card
+        border-left: 2px solid rgb(231, 103, 21)
+        position: relative
         img
+          display: inline-block
           padding-top: 15px
           width: 30%
         .product-info
           padding: 10px
           width: 70%
+        button#details
+          position: absolute
+          display: inline-block
+          background-color: rgba(255, 255, 255, 0)
+          color: #000
+          top: 50%
+          right: 5px
+          transform: translate(0,-50%)

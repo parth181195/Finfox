@@ -22,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-    this.rootPage = OrdersPage;
+    this.rootPage = MyCart;
 
     this.pages = [
       { title: 'Home', component: HomePage },
