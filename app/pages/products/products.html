@@ -14,69 +14,20 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-        <img src="images/placeholder.png">
+    <ion-item *ngFor='let product of products'>
+      <div class="product" (click)="viewDetails(product)">
+        <img [src]="product.images[0].src">
         <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
+          <h2>{{ product.slug }}</h2>
+          <p>Price: ${{ product.price }}</p>
+          <p *ngIf="product.categories.length > 0">Category: {{ product.categories[0].slug }}</p>
         </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
+      </div>
     </ion-item>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

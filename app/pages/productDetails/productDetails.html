@@ -1,8 +1,5 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Product Details</ion-title>
     <ion-buttons end>
       <button>
@@ -14,28 +11,27 @@
 
 <ion-content>
   <ion-card class="image">
-    <img src="images/placeholder.png" />
+    <img [src]="product.images[0].src" />
     <ion-card-content>
-      <span>Category: <a href="#">Desktops and computers</a></span>
+      <span *ngIf="product.categories.length > 0">Category: <u style="color:green">{{ product.categories[0].slug }}</u></span>
       <ion-card-title>
-        Apple iMac
+        {{ product.slug }}
       </ion-card-title>
       <p>
-        Price : $2000
+        Price : ${{ product.price }}
       </p>
     </ion-card-content>
   </ion-card>
   <ion-card class="disc">
     <ion-card-content>
       <p>
-        Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua.
+        {{ product.description }}
       </p>
     </ion-card-content>
   </ion-card>
   <div class="float-button">
-  <button class="add" type="button" name="button">Add to cart</button>
-  <button class="now" type="button" name="button">Buy Now</button>
+    <button class="add" name="button" *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
+    <button class="add" name="button" *ngIf="isInCart" style="width:100%" (click)="openCart()">Go to cart</button>
+    <button class="now" name="button" *ngIf="!isInCart">Buy Now</button>
   </div>
 </ion-content>

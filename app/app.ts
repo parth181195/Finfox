@@ -7,6 +7,7 @@ import { ProductsPage } from './pages/products/products'
 import { MyCart } from './pages/myCart/myCart'
 import { ProductDetails } from './pages/productDetails/productDetails'
 import { Params } from './services/params';
+import { Util } from './services/util';
 //
 // @NgModule({
 //   imports: [HttpModule]
@@ -44,4 +45,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [Params]);
+ionicBootstrap(MyApp, [Params, Util]);
