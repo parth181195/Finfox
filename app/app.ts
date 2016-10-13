@@ -21,12 +21,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
+
     this.rootPage = HomePage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Our Stores', component: OurStores },
-      { title: 'Orders', component: MyCart},
+      { title: 'Orders', component: ProductDetails},
     ];
 
     platform.ready().then(() => {

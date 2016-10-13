@@ -1,29 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Product Details</ion-title>
+    <ion-buttons end>
+      <button>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <img src="images/placeholder.png">
-    </ion-row>
-    <ion-row>
-      <h4>Apple iMac</h4>
-      <p>Price : $2000</p>
-      <p>Category: Desktops and computers</p>
-    </ion-row>
-
-  </ion-grid>
-
+  <ion-card class="image">
+    <img src="images/placeholder.png" />
+    <ion-card-content>
+      <span>Category: <a href="#">Desktops and computers</a></span>
+      <ion-card-title>
+        Apple iMac
+      </ion-card-title>
+      <p>
+        Price : $2000
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="disc">
+    <ion-card-content>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div class="float-button">
+  <button class="add" type="button" name="button">Add to cart</button>
+  <button class="now" type="button" name="button">Buy Now</button>
+  </div>
 </ion-content>
-
-
-
-
-
-
-<!--
-<img src="images/placeholder.png" style="width:100vh;">
-      <div class="product-info" style="float:right">
-        <h2>Apple iMac</h2>
-        <p>Price: $2000</p>
-        <p>Category: Desktops and computers</p>
-      </div>
-
--->
