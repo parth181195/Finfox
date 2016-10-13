@@ -7,8 +7,9 @@ import { ProductsPage } from './pages/products/products'
 import { MyCart } from './pages/myCart/myCart'
 import { OrdersPage } from './pages/orders/orders'
 import { ProductDetails } from './pages/productDetails/productDetails'
+import { Modelspage } from './pages/models/models'
 import { Params } from './services/params';
-//
+
 // @NgModule({
 //   imports: [HttpModule]
 // })
@@ -22,7 +23,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-    this.rootPage = MyCart;
+    this.rootPage = Modelspage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
