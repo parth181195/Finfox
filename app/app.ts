@@ -9,10 +9,8 @@ import { OrdersPage } from './pages/orders/orders'
 import { ProductDetails } from './pages/productDetails/productDetails'
 import { Modelspage } from './pages/models/models'
 import { Params } from './services/params';
-
-// @NgModule({
-//   imports: [HttpModule]
-// })
+import { Util } from './services/util';
+import { BillingPage } from './pages/billingPage/billingPage'
 
 @Component({
   templateUrl: 'build/app.html',
@@ -23,7 +21,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-    this.rootPage = MyCart;
+    this.rootPage = HomePage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -48,4 +46,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp, [Params]);
+ionicBootstrap(MyApp, [Params, Util]);

@@ -25,7 +25,7 @@ export class StoreInfo {
   latLng = null;
   storeId = null;
   ionViewLoaded() {
-    setTimeout(() =>      this.map.invalidateSize(), 600);
+    setTimeout(600);
     this.loadMap()
   }
 
@@ -61,11 +61,10 @@ export class StoreInfo {
     this.description = store["description"];
     this.hasStore = store["hasStore"];
     this.latLng = store["geoLocation"];
-    paramsService.params = {"storeId" : storeId};    
+    paramsService.params = {"storeId" : storeId};
   }
 
   openProductPage() {
-
     this.navCtrl.setRoot(ProductsPage, { animate: true, direction: 'forward' });
   }
 }

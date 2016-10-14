@@ -16,78 +16,34 @@
 </ion-header>
 
 <ion-content>
+  <!-- <ion-list>
+    <ion-item *ngFor='let product of products'>
+      <div class="product" (click)="viewDetails(product)">
+        <img [src]="product.images[0].src">
+        <div class="product-info" style="float:right">
+          <h2>{{ product.slug }}</h2>
+          <p>Price: ${{ product.price }}</p>
+          <p *ngIf="product.categories.length > 0">Category: {{ product.categories[0].slug }}</p>
+        </div>
+      </div>
+    </ion-item> -->
+
   <ion-list class="products">
-    <ion-card>
-        <img src="images/placeholder.png">
+    <ion-card *ngFor='let product of products'>
+      <div class="product" (click)="viewDetails(product)">
+        <img [src]="product.images[0].src">
         <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
+          <h2>{{ product.slug }}</h2>
+          <p>Price: ${{ product.price }}</p>
+          <p *ngIf="product.categories.length > 0">Category: {{ product.categories[0].slug }}</p>
         </div>
         <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
-    </ion-card>
-    <ion-card>
-        <img src="images/placeholder.png">
-        <div class="product-info" style="float:right">
-          <h2>Apple iMac</h2>
-          <p>Price: $2000</p>
-          <p>Category: Desktops and computers</p>
-        </div>
-        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
+      </div>
     </ion-card>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

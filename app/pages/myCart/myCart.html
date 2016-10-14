@@ -4,67 +4,31 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>My Cart</ion-title>
-    <ion-buttons end>
-      <button>
-        <ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item>
-        <img src="images/placeholder.png">
+    <ion-item *ngFor="let cartItem of cartItems; let i = index">
+        <img [src]="cartItem.productImage">
         <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
+          <p><b>{{ cartItem.productName }}</b></p>
+          <h2>Price: ${{ cartItem.price * cartItem.quantity }}</h2>
         </div>
-        <input class="number" type="number" name="name" value="1">
-        <button id="cancel" type="button" name="button">Cancel</button>
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
+        <div class="number">
+          <table>
+            <tr>
+              <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="increment(cartItem)">+</button></td>
+              <td><b style="padding:3px">{{ cartItem.quantity }}</b></td>
+              <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="decrement(cartItem)">-</button></td>
+            </tr>
+          </table>
         </div>
-        <input class="number" type="number" name="name" value="1">
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
-        </div>
-        <input class="number" type="number" name="name" value="1">
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
-        </div>
-        <input class="number" type="number" name="name" value="1">
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
-        </div>
-        <input class="number" type="number" name="name" value="1">
-    </ion-item>
-    <ion-item>
-        <img src="images/placeholder.png">
-        <div class="product-info">
-          <h2>Apple iMac</h2>
-          <h2>Price: $2000</h2>
-        </div>
-        <input class="number" type="number" name="name" value="1">
+
+        <button id="cancel" type="button" name="button" (click)="removeItem(cartItem.id, i)">REMOVE</button>
     </ion-item>
     <div class="float-button">
-    <button class="add" type="button" name="button">Checkout</button>
+      <button class="add" type="button" name="button" (click)="checkout()">Checkout</button>
     </div>
   </ion-list>
 </ion-content>
