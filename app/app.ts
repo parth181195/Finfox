@@ -5,13 +5,11 @@ import { HomePage } from './pages/home/home';
 import { OurStores } from './pages/ourStores/ourStores'
 import { ProductsPage } from './pages/products/products'
 import { MyCart } from './pages/myCart/myCart'
+import { OrdersPage } from './pages/orders/orders'
 import { ProductDetails } from './pages/productDetails/productDetails'
+import { Modelspage } from './pages/models/models'
 import { Params } from './services/params';
 import { Util } from './services/util';
-//
-// @NgModule({
-//   imports: [HttpModule]
-// })
 
 @Component({
   templateUrl: 'build/app.html',
@@ -22,13 +20,15 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages = null;
   constructor(private platform: Platform) {
-
     this.rootPage = HomePage;
 
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Our Stores', component: OurStores },
-      { title: 'Orders', component: ProductDetails},
+      { title: 'Orders', component: OrdersPage},
+      { title: 'Modelspage', component: Modelspage},
+      { title: 'ProductDetails', component: ProductDetails},
+      { title: 'MyCart', component: MyCart},
     ];
 
     platform.ready().then(() => {

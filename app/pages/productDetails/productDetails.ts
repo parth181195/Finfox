@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { CartItem, CartService } from '../../services/cart';
+import { MyCart } from './../myCart/myCart';
+
 
 @Component({
   templateUrl: 'build/pages/productDetails/productDetails.html',
@@ -37,6 +39,8 @@ export class ProductDetails {
 
   openCart(){
     // open cart page when done
+    console.log("clicked")
+    this.navCtrl.push(MyCart)
   }
 
   createToast(message, duration){
