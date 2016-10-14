@@ -7,12 +7,14 @@ export class CartItem{
   productName : string;
   productImage : string;
   quantity : string;
+  price : number;
 
-  constructor(productId, productName, productImage, quantity){
-    this.productId = productId
-    this.productName = productName
-    this.productImage = productImage
-    this.quantity = quantity
+  constructor(productId, productName, productImage, quantity, price){
+    this.productId = productId;
+    this.productName = productName;
+    this.productImage = productImage;
+    this.quantity = quantity;
+    this.price = price;
   }
 }
 
@@ -22,7 +24,7 @@ export class CartService {
 
   constructor() {
     this.storage = new Storage(SqlStorage);
-    this.storage.query('CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY AUTOINCREMENT, productId number, productName text, productImage text, quantity number)');
+    this.storage.query('CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY AUTOINCREMENT, productId number, productName text, productImage text, quantity number, price number)');
   }
 
   public getCart(){
@@ -34,17 +36,22 @@ export class CartService {
   }
 
   public saveItem(cartItem : CartItem){
-    let sql = 'INSERT INTO CART (productId, productName, productImage, quantity) VALUES (?,?,?,?)';
-    return this.storage.query(sql, [cartItem.productId, cartItem.productName, cartItem.productImage, cartItem.quantity]);
+    let sql = 'INSERT INTO CART (productId, productName, productImage, quantity, price) VALUES (?,?,?,?,?)';
+    return this.storage.query(sql, [cartItem.productId, cartItem.productName, cartItem.productImage, cartItem.quantity, cartItem.price]);
   }
 
   public updateQuantiy(quantity, id){
-    let sql = 'UPDATE CART SET quantity=' + quantity + 'WHERE id=' + id;
+    let sql = 'UPDATE CART SET quantity=' + quantity + ' WHERE id=' + id;
     return this.storage.query(sql);
   }
 
   public deleteItem(id){
     let sql = "DELETE FROM CART WHERE id=" + id;
+    return this.storage.query(sql);
+  }
+
+  public emptyCart(){
+    let sql = "DELETE FROM CART";
     return this.storage.query(sql);
   }
 }

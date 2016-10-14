@@ -13,7 +13,7 @@ export class ProductDetails {
 
   @Input() product = null;
   toastCtrl = null;
-  isInCart = null;
+  @Input() isInCart = null;
   cartService = null;
   constructor(public navCtrl: NavController, params: NavParams, toastCtrl: ToastController, cartService: CartService) {
     this.navCtrl = navCtrl;
@@ -32,9 +32,10 @@ export class ProductDetails {
   }
 
   addToCart(){
-    let cartItem = new CartItem(this.product.id, this.product.slug, this.product.images[0].src, 1);
+    let cartItem = new CartItem(this.product.id, this.product.slug, this.product.images[0].src, 1, this.product.price);
     this.cartService.saveItem(cartItem);
     this.createToast("Added To Cart", 2000);
+    this.isInCart = true;
   }
 
   openCart(){

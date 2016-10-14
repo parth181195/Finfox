@@ -10,6 +10,7 @@ import { ProductDetails } from './pages/productDetails/productDetails'
 import { Modelspage } from './pages/models/models'
 import { Params } from './services/params';
 import { Util } from './services/util';
+import { BillingPage } from './pages/billingPage/billingPage'
 
 @Component({
   templateUrl: 'build/app.html',
