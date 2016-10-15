@@ -1,0 +1,34 @@
+<!--
+  Generated template for the OurStores page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Our Stores</ion-title>
+    <ion-buttons end>
+      <button ion-button clear>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor='let store of stores'>
+      <ion-card [ngStyle]="{'background-image': 'url(' + store.backgroundUrl + ')'}" (click)="openStoreInfo(store)">
+        <img [src]="store.logoUrl" alt=""/>
+        <ion-card-title>
+          {{store.title}}
+        </ion-card-title>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

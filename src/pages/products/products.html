@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Products</ion-title>
+    <ion-buttons end>
+      <button ion-button clear (click)="openCart()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+      <!-- <button ion-button clear>
+        <ion-icon style="font-size:1.3em" name="funnel"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="products">
+    <ion-card *ngFor='let product of products'>
+      <div class="product" (click)="viewDetails(product)">
+        <img [src]="product.images[0].src">
+        <div class="product-info" style="float:right">
+          <h2>{{ product.slug }}</h2>
+          <p>Price: ${{ product.price }}</p>
+          <p *ngIf="product.categories.length > 0">Category: {{ product.categories[0].slug }}</p>
+        </div>
+        <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
+      </div>
+    </ion-card>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

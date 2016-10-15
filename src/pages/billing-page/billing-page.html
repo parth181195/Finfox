@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Billing Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+      <ion-label color="primary" floating>Firstname</ion-label>
+      <ion-input [(ngModel)]="billing.firstName"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label color="primary" floating>Lastname</ion-label>
+      <ion-input [(ngModel)]="billing.lastName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>Address Line 1</ion-label>
+    <ion-input [(ngModel)]="billing.Address1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>Address Line 2</ion-label>
+    <ion-input [(ngModel)]="billing.Address2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>Postal Code</ion-label>
+    <ion-input [(ngModel)]="billing.postalCode"></ion-input>
+  </ion-item>
+  <button ion-button block (click)="checkout()">Procced to Checkout
+    <ion-icon name="cart"></ion-icon>
+  </button>
+</ion-content>

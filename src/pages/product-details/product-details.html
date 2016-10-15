@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Product Details</ion-title>
+    <ion-buttons end>
+      <button (click)="openCart()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="image">
+    <img [src]="product.images[0].src" />
+    <ion-card-content>
+      <span *ngIf="product.categories.length > 0">Category: <u style="color:green">{{ product.categories[0].slug }}</u></span>
+      <ion-card-title>
+        {{ product.slug }}
+      </ion-card-title>
+      <p>
+        Price : ${{ product.price }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="disc">
+    <ion-card-content>
+      <p>
+        {{ product.description }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div id="float-button">
+    <button ion-button block class="add" *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
+    <button ion-button block class="add" *ngIf="isInCart" style="width:100%" (click)="openCart()">Go to cart</button>
+    <button ion-button block class="now" *ngIf="!isInCart" (click)="addToCart()">Buy Now</button>
+  </div>
+</ion-content>
