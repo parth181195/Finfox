@@ -75,6 +75,6 @@ export class ProductsPage {
       }
   }
   openCart(){
-    this.navCtrl.setRoot(MyCart)
+    this.navCtrl.setRoot(MyCart, {}, {animate : true, direction : 'forward'})
   }
 }

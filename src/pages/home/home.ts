@@ -21,7 +21,7 @@ export class HomePage {
   }
 
   openCart(){
-    this.navCtrl.push(MyCart)
+    this.navCtrl.setRoot(MyCart, {}, {animate : true, direction : 'forward'})
   }
 
 

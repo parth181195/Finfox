@@ -17,9 +17,12 @@
 
 <ion-content>
   <ion-list class="products">
-    <ion-card *ngFor='let product of products'>
+    <button id="productcard" *ngFor='let product of products'>
       <div class="product" (click)="viewDetails(product)">
-        <img [src]="product.images[0].src">
+        <div class="img">
+            <img [src]="product.images[0].src">
+        </div>
+
         <div class="product-info" style="float:right">
           <h2>{{ product.slug }}</h2>
           <p>Price: ${{ product.price }}</p>
@@ -27,7 +30,7 @@
         </div>
         <button id="details" type="button" name="button"><ion-icon name="arrow-dropright"></ion-icon></button>
       </div>
-    </ion-card>
+    </button>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

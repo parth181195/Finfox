@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { StoreDets } from '../store-dets/store-dets';
+import { MyCart } from '../my-cart/my-cart';
 
 /*ßß
   Generated class for the OurStores page.
@@ -32,6 +33,10 @@ export class OurStores {
 
   openStoreInfo(store){
     this.navCtrl.push(StoreDets, store);
+  }
+
+  openCart(){
+    this.navCtrl.setRoot(MyCart, {}, {animate : true, direction : 'forward'})
   }
 
 }

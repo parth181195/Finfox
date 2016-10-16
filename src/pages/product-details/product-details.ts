@@ -7,6 +7,7 @@ import { Util } from '../../providers/util';
 import 'rxjs/Rx';
 import { Device } from 'ionic-native';
 import { Params } from '../../providers/params';
+import { MyCart } from '../my-cart/my-cart';
 
 
 @Component({
@@ -81,7 +82,7 @@ export class ProductDetails{
   }
 
   openCart(){
-
+    this.navCtrl.setRoot(MyCart, {}, {animate : true, direction : 'forward'})
   }
 
   ionViewDidLoad(){

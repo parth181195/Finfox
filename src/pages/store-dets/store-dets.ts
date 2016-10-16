@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Params } from '../../providers/params';
 import { ProductsPage } from '../products/products';
-
+import { MyCart } from '../my-cart/my-cart'
 declare var google;
 /*
   Generated class for the Models page.
@@ -69,6 +69,10 @@ export class StoreDets {
     console.log('Hello StoreDets');
     setTimeout(600);
     this.loadMap()
+  }
+
+  openCart(){
+    this.navCtrl.setRoot(MyCart, {}, {animate : true, direction : 'forward'})
   }
 
 }

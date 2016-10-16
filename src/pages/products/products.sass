@@ -2,18 +2,35 @@ products-page
   ion-content
     position: relative
     ion-list.products
-      ion-card
+      button#productcard:first-child
+        margin-top: 5px
+      width: 94%
+      margin: auto
+      button#productcard
+        width: 100%
+        margin-bottom: 20px
+        height: 100px
         position: relative
-        img
+        background-color: #fff
+        box-shadow: 0 2px 4px rgba(#000,0.3)
+        border-radius: 3px
+        .img
           display: inline-block
-          padding-top: 15px
           width: 30%
-          max-height: 80%
-          padding-left: 10px
-          transform: translateY(-10px)
+          height: 100%
+          padding: 5px 0 5px 10px
+          img
+            width: 100%
+            max-height: 100%
         .product-info
           padding: 10px
           width: 70%
+          text-align: left
+          h2
+            font-weight: 400
+          h2,p
+            margin: 0
+            padding-bottom: 5px
         button#details
           position: absolute
           display: inline-block
