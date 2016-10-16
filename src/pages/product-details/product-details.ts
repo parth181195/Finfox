@@ -90,4 +90,27 @@ export class ProductDetails{
     this.checkIfItemExists();
   }
 
+  buyNow(){
+    let params = {
+      "uuid" : this.uuid,
+      "productId" : this.product.id,
+      "productName" : this.product.slug,
+      "productImage" : this.product.images[0].src,
+      "productPrice" : this.product.price,
+      "store" : this.storeIdentifier,
+      "quantity" : 1
+    }
+    let headers = new Headers({'Content-Type': 'application/json'})
+    let options = new RequestOptions({ headers : headers});
+    this.http.post(this.util.host + '/api/addItem', JSON.stringify(params), options)
+      .subscribe((data) => {
+          data = data.json()
+          if(data["response"] == "success"){
+            this.isInCart = true;
+            this.createToast("Item added to cart", 2000);
+            this.openCart()
+          }
+      });
+  }
+
 }

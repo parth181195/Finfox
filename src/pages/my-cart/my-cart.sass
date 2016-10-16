@@ -2,28 +2,42 @@ my-cart
   ion-content
     ion-list
       ion-item
-        img
+        .label-ios
+          margin: 0
+        .img
           display: inline-block
-          padding-top: 15px
           width: 30%
-          max-height: 80%
-          padding-left: 10px
+          max-height: 100%
+          height: 100%
+          padding: 3px 0 3px 0px
+          img
+            width: 100%
+            height: auto
+            transform: translateY(7px)
+            max-height: 100%
         .product-info
           transform: translateY(-30px)
           display: inline-block
           padding: 10px
           width: 50%
-      button#cancel
-        display: inline-block
-        transform: translate(-10px,-16px)
-        background-color: rgb(242, 84, 63)
-      .number
+          p
+            font-size: 0.8em
+            width: 100px
+            overflow: hidden
+          h2
+            font-size: 1em
+      .remove
         position: absolute
         transform: translateY(-30px)
         top: 50%
-        display: inline-block
-        float: right
-        width: 15%
+        right: 0
+        padding-right: 10px
+        button#cancel
+          display: inline-block
+          // transform: translate(0,-16px)
+          background-color: rgb(242, 84, 63)
+        .number
+          width: 15%
       .float-button
         background-color: #fff
         position: fixed

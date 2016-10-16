@@ -7,6 +7,7 @@ import { Util } from '../../providers/util';
 import { Device } from 'ionic-native';
 import { AlertController } from 'ionic-angular';
 import { OurStores } from '../our-stores/our-stores';
+import { ActionSheetController } from 'ionic-angular'
 
 
 @Component({
@@ -22,8 +23,9 @@ export class BillingPage{
   http = null;
   util = null;
   alertCtrl = null;
+  actionSheetCtrl = null;
 
-  constructor(public navCtrl: NavController, toastCtrl: ToastController, navParams : NavParams, http: Http, util: Util, alertCtrl : AlertController){
+  constructor(public navCtrl: NavController, toastCtrl: ToastController, navParams : NavParams, http: Http, util: Util, alertCtrl : AlertController, actionSheetCtrl: ActionSheetController){
     this.navCtrl = navCtrl;
     this.toastCtrl = toastCtrl;
     this.billing = {};
@@ -31,6 +33,7 @@ export class BillingPage{
     this.util = util;
     this.alertCtrl = alertCtrl;
     this.lineItems = navParams.get("lineItems");
+    this.actionSheetCtrl = actionSheetCtrl;
   }
 
   checkout(){
@@ -49,92 +52,139 @@ export class BillingPage{
     else{
       // AecS9a7a31JKUa_NK_lb-_CVhpqWhUnMW27-VpTyX6vqt7wehO3T7NxGsZg7ygnuIGgP7Dd4Q9jWV3pb
       // let paymentdata = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
-      let total = 0
-      for(let i = 0; i<this.lineItems.length; i++){
-        total += (parseFloat(this.lineItems[i].price) * parseFloat(this.lineItems[i].quantity))
-      }
-      PayPal.init({
-  "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
-  "PayPalEnvironmentSandbox": "AecS9a7a31JKUa_NK_lb-_CVhpqWhUnMW27-VpTyX6vqt7wehO3T7NxGsZg7ygnuIGgP7Dd4Q9jWV3pb"
-}).then(() => {
-  // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-  PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-    // Only needed if you get an "Internal Service Error" after PayPal login!
-    //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-  })).then(() => {
-    let payment = new PayPalPayment(total.toString(), 'USD', 'NSB checkout', 'sale');
-    PayPal.renderSinglePaymentUI(payment).then(() => {
-      // Successfully paid
-        console.log("Successfully paid")
-        let uuid = Device.device.uuid;
-        let params = {
-          "payment_method" : "paypal",
-          "billing" : {
-            "first_name": this.billing.firstName,
-            "last_name": this.billing.lastName,
-            "address_1": this.billing.Address1,
-            "address_2": this.billing.Address2,
-            "postcode": this.billing.postalCode,
+      let actionSheet = this.actionSheetCtrl.create({
+        title: 'Choose payment method',
+        buttons: [
+          {
+            text: 'Paypal',
+            handler: () => {
+              this.payWithPayPal()
+            }
           },
-          "line_Items" : this.lineItems,
-          "uuid" : uuid
-        }
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({ headers : headers});
+          {
+            text: 'Cash on delivery',
+            handler: () => {
+              this.COD()
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          }
+       ]
+     });
+     actionSheet.present();
+    }
 
-        this.http.post(this.util.host + '/api/orders', JSON.stringify(params), options)
-          .subscribe((data) => {
-          let alert = this.alertCtrl.create({
-              title: 'Payment Successful!',
-              subTitle: 'We have recived your paymen thanks for shopping with us!',
-              buttons: [
-                 {
-                   "text" : 'OK',
-                   "handler" : data => {
-                     this.navCtrl.setRoot(OurStores)
-                   }
-                 }
-              ]
-            });
-            alert.present();
+  }
+
+  COD(){
+    let total = 0
+    for(let i = 0; i<this.lineItems.length; i++){
+      total += (parseFloat(this.lineItems[i].price) * parseFloat(this.lineItems[i].quantity))
+    }
+
+    let uuid = Device.device.uuid;
+    let params = {
+      "payment_method" : "COD",
+      "billing" : {
+        "first_name": this.billing.firstName,
+        "last_name": this.billing.lastName,
+        "address_1": this.billing.Address1,
+        "address_2": this.billing.Address2,
+        "postcode": this.billing.postalCode,
+      },
+      "line_Items" : this.lineItems,
+      "uuid" : uuid
+    }
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers : headers});
+
+    this.http.post(this.util.host + '/api/orders', JSON.stringify(params), options)
+      .subscribe((data) => {
+      let alert = this.alertCtrl.create({
+          title: 'Order Confirmation',
+          subTitle: 'Your order has been placed, thanks for shopping with us.',
+          buttons: [
+             {
+               "text" : 'OK',
+               "handler" : data => {
+                 this.navCtrl.setRoot(OurStores)
+               }
+             }
+          ]
         });
-
-      // Example sandbox response
-      //
-      // {
-      //   "client": {
-      //     "environment": "sandbox",
-      //     "product_name": "PayPal iOS SDK",
-      //     "paypal_sdk_version": "2.16.0",
-      //     "platform": "iOS"
-      //   },
-      //   "response_type": "payment",
-      //   "response": {
-      //     "id": "PAY-1AB23456CD789012EF34GHIJ",
-      //     "state": "approved",
-      //     "create_time": "2016-10-03T13:33:33Z",
-      //     "intent": "sale"
-      //   }
-      // }
-    }, () => {
-      // Error or render dialog closed without being successful
-      console.log("Successfully paid")
+        alert.present();
     });
+
+  }
+
+  payWithPayPal(){
+    let total = 0
+    for(let i = 0; i<this.lineItems.length; i++){
+      total += (parseFloat(this.lineItems[i].price) * parseFloat(this.lineItems[i].quantity))
+    }
+    PayPal.init({
+"PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
+"PayPalEnvironmentSandbox": "AecS9a7a31JKUa_NK_lb-_CVhpqWhUnMW27-VpTyX6vqt7wehO3T7NxGsZg7ygnuIGgP7Dd4Q9jWV3pb"
+}).then(() => {
+// Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+PayPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+  // Only needed if you get an "Internal Service Error" after PayPal login!
+  //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+})).then(() => {
+  let payment = new PayPalPayment(total.toString(), 'USD', 'NSB checkout', 'sale');
+  PayPal.renderSinglePaymentUI(payment).then(() => {
+    // Successfully paid
+      console.log("Successfully paid")
+      let uuid = Device.device.uuid;
+      let params = {
+        "payment_method" : "paypal",
+        "billing" : {
+          "first_name": this.billing.firstName,
+          "last_name": this.billing.lastName,
+          "address_1": this.billing.Address1,
+          "address_2": this.billing.Address2,
+          "postcode": this.billing.postalCode,
+        },
+        "line_Items" : this.lineItems,
+        "uuid" : uuid
+      }
+      let headers = new Headers({'Content-Type': 'application/json'});
+      let options = new RequestOptions({ headers : headers});
+
+      this.http.post(this.util.host + '/api/orders', JSON.stringify(params), options)
+        .subscribe((data) => {
+        let alert = this.alertCtrl.create({
+            title: 'Payment Successful!',
+            subTitle: 'We have recived your paymen thanks for shopping with us!',
+            buttons: [
+               {
+                 "text" : 'OK',
+                 "handler" : data => {
+                   this.navCtrl.setRoot(OurStores)
+                 }
+               }
+            ]
+          });
+          alert.present();
+      });
+
   }, () => {
-    // Error in configuration
+    // Error or render dialog closed without being successful
     console.log("Successfully paid")
   });
 }, () => {
-  // Error in initialization, maybe PayPal isn't supported or something else
+  // Error in configuration
   console.log("Successfully paid")
 });
-
-
-
-
-
-    }
-
+}, () => {
+// Error in initialization, maybe PayPal isn't supported or something else
+console.log("Successfully paid")
+});
   }
 
   createToast(message, duration){

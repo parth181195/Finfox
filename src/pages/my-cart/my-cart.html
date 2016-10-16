@@ -10,22 +10,26 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let cartItem of cartItems; let i = index">
-        <img [src]="cartItem.productImage">
+        <div class="img">
+          <img [src]="cartItem.productImage">
+        </div>
         <div class="product-info">
           <p><b>{{ cartItem.productName }}</b></p>
           <h2>Price: ${{ cartItem.price * cartItem.quantity }}</h2>
         </div>
-        <div class="number">
-          <table>
-            <tr>
-              <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="increment(cartItem)">+</button></td>
-              <td><b style="padding:3px">{{ cartItem.quantity }}</b></td>
-              <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="decrement(cartItem)">-</button></td>
-            </tr>
-          </table>
-        </div>
+        <div class="remove">
+          <div class="number">
+            <table>
+              <tr>
+                <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="increment(cartItem)">+</button></td>
+                <td><b style="padding:3px">{{ cartItem.quantity }}</b></td>
+                <td><button ion-button color="secondary" round style="height:25px;width:25px" (click)="decrement(cartItem)">-</button></td>
+              </tr>
+            </table>
+          </div>
 
-        <button id="cancel" type="button" name="button" (click)="removeItem(cartItem.id, i)" ion-button>REMOVE</button>
+          <button id="cancel" type="button" name="button" (click)="removeItem(cartItem.id, i)" ion-button>REMOVE</button>
+        </div>
     </ion-item>
     <div class="float-button">
       <button class="add" type="button" name="button" (click)="checkout()" ion-button block>Checkout</button>

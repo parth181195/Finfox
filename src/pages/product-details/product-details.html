@@ -3,7 +3,7 @@
     <ion-title>Product Details</ion-title>
     <ion-buttons end>
       <button (click)="openCart()">
-        <ion-icon name="cart"></ion-icon>
+        <ion-icon name="cart" ion-button clear></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -31,7 +31,7 @@
   </ion-card>
   <div id="float-button">
     <button ion-button block class="add" *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
-    <button ion-button block class="add" *ngIf="isInCart" style="width:100%" (click)="openCart()">Go to cart</button>
-    <button ion-button block class="now" *ngIf="!isInCart" (click)="addToCart()">Buy Now</button>
+    <button ion-button block class="cart" *ngIf="isInCart" style="width:100%" (click)="openCart()">Go to cart</button>
+    <!-- <button ion-button block class="now" *ngIf="!isInCart" (click)="buyNow()">Buy Now</button> -->
   </div>
 </ion-content>
