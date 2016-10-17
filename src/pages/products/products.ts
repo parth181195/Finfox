@@ -50,7 +50,7 @@ export class ProductsPage {
 
   viewDetails(product){
     console.log(product);
-    this.navCtrl.push(ProductDetails, {"product" : product});
+    this.navCtrl.push(ProductDetails, {"product" : product, "store" : "LY"});
   }
 
 
