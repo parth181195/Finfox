@@ -18,8 +18,14 @@
         <div #map id="map"></div>
     </ion-row>
     <ion-row>
+      <ion-card id="store-info">
+        <span id="address"><ion-icon name="home"></ion-icon>{{address}}</span> <br>
+        <span id="email">  <ion-icon name="mail"></ion-icon>{{email}}</span> <br>
+        <span id="phoneNo">  <ion-icon name="call"></ion-icon>{{phoneNo}}</span> <br>
+      </ion-card>
+    </ion-row>
+    <ion-row>
       <button ion-button block (click)="openProductPage()" *ngIf="hasStore">Explore Our Products</button>
     </ion-row>
-
   </ion-grid>
 </ion-content>
