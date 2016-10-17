@@ -4,6 +4,7 @@ import { Http, HttpModule, Response, RequestOptions, Headers} from '@angular/htt
 import { Util } from '../../providers/util';
 import { Device } from 'ionic-native';
 import { BillingPage } from '../billing-page/billing-page'
+import { ToastController } from 'ionic-angular';
 
 
 
@@ -17,13 +18,15 @@ export class MyCart {
    http = null;
    util = null;
    uuid = null;
+   toastCtrl = null;
    @Input() cartItems:Array<any> = [];
-  constructor(public navCtrl: NavController, util: Util, http: Http) {
+  constructor(public navCtrl: NavController, util: Util, http: Http, toastCtrl: ToastController) {
     this.navCtrl = navCtrl;
     this.hasItemsInCart = false;
     this.http = http;
     this.util = util;
     this.uuid = Device.device.uuid;
+    this.toastCtrl = toastCtrl;
     console.log(util);
     this.http.get(this.util.host + '/api/cart/' + this.uuid)
       .map((res: Response) => res.json()["response"])
@@ -86,11 +89,25 @@ export class MyCart {
 
   checkout(){
     let lineItems = []
+    let total = 0;
     for(let i=0;i<this.cartItems.length;i++){
       let cartItem = this.cartItems[i];
-      lineItems.push({"product_id" : cartItem.productId, "quantity" : cartItem.quantity, "price" : cartItem.price});
+      total += parseInt(cartItem.quanity) * parseInt(cartItem.price)
+          lineItems.push({"product_id" : cartItem.productId, "quantity" : cartItem.quantity, "price" : cartItem.price});
+
     }
-    this.navCtrl.push(BillingPage, {"lineItems" : lineItems});
+    if(total > 0){
+            this.navCtrl.push(BillingPage, {"lineItems" : lineItems});
+    }
+    else{
+      let toast = this.toastCtrl.create({
+        message: 'Your cart is empty',
+        duration: 3000
+      });
+      toast.present();
+
+    }
+
   }
 
 }
