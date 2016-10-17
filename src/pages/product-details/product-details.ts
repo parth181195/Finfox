@@ -37,8 +37,7 @@ export class ProductDetails{
     this.uuid = Device.device.uuid;
     this.paramsService = paramsService;
     let storeIdentifier = ['LY', 'WD'];
-    console.log(params["store"])
-    this.storeIdentifier = storeIdentifier[params["storeId"]];
+    this.storeIdentifier = storeIdentifier[paramsService.params["storeId"]];
   }
 
   addToCart(){
