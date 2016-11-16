@@ -11,11 +11,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Our Stores</ion-title>
-    <ion-buttons end>
+    <!--<ion-buttons end>
       <button ion-button clear (click)="openCart()">
         <ion-icon name="cart"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
   </ion-navbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
 <ion-content padding>
   <ion-grid>
     <ion-row *ngFor='let store of stores'>
-      <button id="card"[ngStyle]="{'background-image': 'url(' + store.backgroundUrl + ')'}" (click)="openStoreInfo(store)">
+      <button id="card" [ngStyle]="{'background-image': 'url(' + store.backgroundUrl + ')'}" (click)="openStoreInfo(store)">
         <img [src]="store.logoUrl" alt=""/>
         <ion-card-title>
           {{store.title}}

@@ -22,8 +22,8 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Our Stores', component: OurStores },
-      { title: 'My Cart', component: MyCart},
+      { title: 'Our Stores', component: OurStores }
+      // { title: 'My Cart', component: MyCart},
     ]
   }
   openPage(page){

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Params } from '../../providers/params';
 import { ProductsPage } from '../products/products';
+import { ProductCategories } from '../product-categories/product-categories'
 import { MyCart } from '../my-cart/my-cart'
 // declare var google;
 /*
@@ -28,6 +29,7 @@ export class StoreDets {
   email = null;
   address = null;
   phoneNo = null;
+  title;
   constructor(public navCtrl: NavController, params : NavParams, paramsService : Params) {
 
     this.navCtrl = navCtrl;
@@ -43,11 +45,13 @@ export class StoreDets {
     let store = this.stores[storeId];
     this.logo = store["logoUrl"];
     this.description = store["description"];
-    this.hasStore = store["hasStore"];
+    // this.hasStore = store["hasStore"];
+    this.hasStore = true;
     this.latLng = store["geoLocation"];
     this.address = store["address"];
     this.email = store["email"];
     this.phoneNo = store["phoneNo"];
+    this.title = store["title"];
     paramsService.params = {"storeId" : storeId};
   }
 
@@ -67,7 +71,7 @@ export class StoreDets {
   }
 
   openProductPage() {
-    this.navCtrl.setRoot(ProductsPage, { animate: true, direction: 'forward' });
+    this.navCtrl.push(ProductCategories, {"store_name" : this.title}, { animate: true, direction: 'forward' });
   }
 
 
