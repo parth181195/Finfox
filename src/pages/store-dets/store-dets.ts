@@ -49,8 +49,8 @@ export class StoreDets {
         "color" : "weed_duryea"
       },
       { "title": "LUMBER YARD", "address" : "1460 Barnum AveBridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203) 366-4757","logoUrl": "images/store2.png", "backgroundUrl": "images/back2.jpg", "id": 2, "hasStore": true, "description": "For over 65 years, Northeast Building Supply in Bridgeport, CT (Formerly known as Bridgeport Lumber), has been dedicated to serving the needs of the professional building industry with a full range of building materials",
-      "linkColor" : " #a67733",
-      "color" : "cornwall_lumber"
+      "linkColor" : " #213D34",
+      "color" : "green_color"
       },
       { "title": "KITCHEN CENTER", "address" : "1470 Barnum Ave, Bridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203)-576-8696","logoUrl": "images/store3.png", "backgroundUrl": "images/back3.jpg", "id": 3, "hasStore": false, "description": "Located right next door to the Bridgeport Lumberyard is the Kitchen Centers of CT showroom. This is a dynamic and fast-growing solution for architects, designers, builders, and homeowners who need skilled and experienced professionals to provide design and installation solutions for new and remodeled kitchens.",
       "linkColor" : " #c7c4b7",
