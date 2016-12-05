@@ -5,13 +5,14 @@ import { OurStores } from '../pages/our-stores/our-stores';
 import { ProductsPage } from '../pages/products/products';
 import { MyCart } from '../pages/my-cart/my-cart';
 import { HomePage } from '../pages/home/home';
+import { ImageGallery } from '../pages/image-gallery/image-gallery'
 
 @Component({
   selector : 'app',
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = HomePage;
+  rootPage = ImageGallery;
   pages = []
   @ViewChild(Nav) nav: Nav;
   constructor(platform: Platform) {
