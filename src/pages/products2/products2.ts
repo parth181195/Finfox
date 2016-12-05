@@ -17,10 +17,37 @@ export class ProductsPage2 {
   params: NavParams;
   util: Util;
   products: any;
+  color;
   constructor(public navCtrl: NavController, params: NavParams, util: Util) {
     this.navCtrl = navCtrl;
     this.params = params;
     this.util = util;
+    let colors = {
+     "WEED & DURYEA" : { 
+        "linkColor" : "#562421",
+        "color" : "weed_duryea"
+      },
+     "LUMBER YARD" : { 
+        "linkColor" : " #a67733",
+        "color" : "cornwall_lumber"
+      },
+     "KITCHEN CENTER" : { 
+        "linkColor" : " #c7c4b7",
+        "color" : "kitchen_center"
+      },
+     "PAINT CENTER" : { 
+        "linkColor" : " #a67733",
+        "color" : "cornwall_lumber"
+      },
+     "WINDOWS & DOORS" : { 
+        "linkColor" : " #47759a",
+        "color" : "ABC"
+      }       
+    }    
+
+    this.color = colors[this.params.get("store_name")].color;    
+    console.log(this.color);
+    
   }
 
   ionViewDidLoad() {
