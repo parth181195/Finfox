@@ -9,7 +9,7 @@ import { ToastController } from 'ionic-angular';
 
 
 @Component({
-  templateUrl: 'my-cart.html',
+  templateUrl: './my-cart.html',
   selector : 'my-cart',
   providers : [HttpModule]
 })
