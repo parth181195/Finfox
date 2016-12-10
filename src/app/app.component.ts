@@ -12,7 +12,7 @@ import { ImageGallery } from '../pages/image-gallery/image-gallery'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = ImageGallery;
+  rootPage = HomePage;
   pages = []
   @ViewChild(Nav) nav: Nav;
   constructor(platform: Platform) {
