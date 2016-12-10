@@ -4,6 +4,7 @@ import { Params } from '../../providers/params';
 import { ProductsPage } from '../products/products';
 import { ProductCategories } from '../product-categories/product-categories'
 import { MyCart } from '../my-cart/my-cart'
+import { ImageGallery } from '../image-gallery/image-gallery'
 // declare var google;
 /*
   Generated class for the Models page.
@@ -48,7 +49,7 @@ export class StoreDets {
         "linkColor" : "#562421",
         "color" : "weed_duryea"
       },
-      { "title": "LUMBER YARD", "address" : "1460 Barnum AveBridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203) 366-4757","logoUrl": "images/store2.png", "backgroundUrl": "images/back2.jpg", "id": 2, "hasStore": true, "description": "For over 65 years, Northeast Building Supply in Bridgeport, CT (Formerly known as Bridgeport Lumber), has been dedicated to serving the needs of the professional building industry with a full range of building materials",
+      { "title": "LUMBER YARD", "address" : "1460 Barnum AveBridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203) 366-4757","logoUrl": "images/store2.png", "backgroundUrl": "images/back2.jpg", "id": 2, "hasStore": true, "description": "For over 65 years, Northeast Building Suppl  y in Bridgeport, CT (Formerly known as Bridgeport Lumber), has been dedicated to serving the needs of the professional building industry with a full range of building materials",
       "linkColor" : "#213d34",
       "color" : "green_color"
       },
@@ -81,6 +82,8 @@ export class StoreDets {
     this.linkColor = store["linkColor"];
     this.color = store["color"];
     paramsService.params = {"storeId" : storeId};
+    this.storeId = storeId;
+
   }
 
 
@@ -99,7 +102,13 @@ export class StoreDets {
   }
 
   openProductPage() {
-    this.navCtrl.push(ProductCategories, {"store_name" : this.title}, { animate: true, direction: 'forward' });
+    console.log(this.storeId);
+
+    if(this.storeId == 4){
+      this.navCtrl.push(ImageGallery);
+    } else{
+      this.navCtrl.push(ProductCategories, {"store_name" : this.title}, { animate: true, direction: 'forward' });
+    }
   }
 
 

@@ -1,14 +1,11 @@
 <ion-header>
-    <ion-navbar color="{{color}}">
-        <ion-title>Gallary</ion-title>
+    <ion-navbar color="ABC">
+        <ion-title>Gallery</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-    <div class="imgcard"><img src="images/back2.jpg" style="width:100%" alt=""></div>
-    <div class="imgcard"><img src="images/back2.jpg" style="width:100%" alt=""></div>
-    <div class="imgcard"><img src="images/back2.jpg" style="width:100%" alt=""></div>
-    <div class="imgcard"><img src="images/back2.jpg" style="width:100%" alt=""></div>
+    <div class="imgcard" *ngFor="let image of images" ><img [src]="image" style="width:100%" alt=""></div>
 
 </ion-content>
