@@ -6,6 +6,6 @@
 
 <ion-content>
 
-    <div class="imgcard" *ngFor="let image of images" ><img [src]="image" style="width:100%" alt=""></div>
+    <div class="imgcard" (click)="open_image(image)" *ngFor="let image of images"><img [src]="image" style="width:100%" alt=""></div>
 
 </ion-content>

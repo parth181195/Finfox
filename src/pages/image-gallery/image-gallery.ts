@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { ImagePage } from '../image-page/image-page';
 
 
 @Component({
@@ -7,7 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class ImageGallery {
   images: Array<string>;
-  constructor(){
+  
+  open_image(image){
+this.navCtrl.push(ImagePage, {image : image});
+}
+  constructor(public navCtrl: NavController){
+    this.navCtrl = navCtrl;
     this.images = [
       "http://www.nbslumber.com/architectural-building-components/wp-content/uploads/2016/10/abc-bedfordpostrichardgere__DSC1655-1024x682-1024x682.jpg",
       "http://www.nbslumber.com/architectural-building-components/wp-content/uploads/2016/10/abc-bedfordpostrichardgere__DSC1665-1024x682-1024x682.jpg",

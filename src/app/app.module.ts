@@ -13,6 +13,7 @@ import { MyCart } from '../pages/my-cart/my-cart';
 import { BillingPage } from '../pages/billing-page/billing-page'
 import { ProductCategories } from '../pages/product-categories/product-categories';
 import { ImageGallery } from '../pages/image-gallery/image-gallery'
+import { ImagePage } from '../pages/image-page/image-page'
 @NgModule({
   declarations: [
     MyApp,
@@ -23,7 +24,8 @@ import { ImageGallery } from '../pages/image-gallery/image-gallery'
     BillingPage,
     ProductCategories,
     ProductsPage2,
-    ImageGallery
+    ImageGallery,
+    ImagePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -39,7 +41,8 @@ import { ImageGallery } from '../pages/image-gallery/image-gallery'
     BillingPage,
     ProductCategories,
     ProductsPage2,
-    ImageGallery
+    ImageGallery,
+    ImagePage
   ],
   providers: [Params, Util]
 })

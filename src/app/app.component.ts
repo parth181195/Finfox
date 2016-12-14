@@ -6,7 +6,7 @@ import { ProductsPage } from '../pages/products/products';
 import { MyCart } from '../pages/my-cart/my-cart';
 import { HomePage } from '../pages/home/home';
 import { ImageGallery } from '../pages/image-gallery/image-gallery'
-
+import { ImagePage } from '../pages/image-page/image-page'
 @Component({
   selector : 'app',
   templateUrl: 'app.html'
