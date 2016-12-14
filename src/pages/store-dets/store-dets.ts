@@ -49,19 +49,19 @@ export class StoreDets {
         "linkColor" : "#562421",
         "color" : "weed_duryea"
       },
-      { "title": "LUMBER YARD", "address" : "1460 Barnum AveBridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203) 366-4757","logoUrl": "images/store2.png", "backgroundUrl": "images/back2.jpg", "id": 2, "hasStore": true, "description": "For over 65 years, Northeast Building Suppl  y in Bridgeport, CT (Formerly known as Bridgeport Lumber), has been dedicated to serving the needs of the professional building industry with a full range of building materials",
+      { "title": "LUMBER YARD", "address" : "1460 Barnum AveBridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203) 366-4757","logoUrl": "images/store2.png", "backgroundUrl": "images/back2.jpg", "id": 2, "hasStore": true, "description": "For over 65 years, Northeast Building Suppl  y in Bridgeport, CT (Formerly known as Bridgeport Lumber), has been dedicated to serving the needs of the professional building industry with a full range of building materials.",
       "linkColor" : "#213d34",
       "color" : "green_color"
       },
       { "title": "KITCHEN CENTER", "address" : "1470 Barnum Ave, Bridgeport, CT 06610", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(203)-576-8696","logoUrl": "images/store3.png", "backgroundUrl": "images/back3.jpg", "id": 3, "hasStore": false, "description": "Located right next door to the Bridgeport Lumberyard is the Kitchen Centers of CT showroom. This is a dynamic and fast-growing solution for architects, designers, builders, and homeowners who need skilled and experienced professionals to provide design and installation solutions for new and remodeled kitchens.",
-      "linkColor" : "#c7c4b7",
-      "color" : "kitchen_center"      
+      "linkColor" : "#7b796e",
+      "color" : "kitchen_center"
       },
-      { "title": "PAINT CENTER", "address" : "CT-4 & Kent Rd S, Cornwall Bridge, CT 06754", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(860) 672-40","logoUrl": "images/store4.png", "backgroundUrl": "images/back4.jpg", "id": 4, "hasStore": false, "description": "Discover Weed & Duryea of Cornwall Bridge (a division of Northeast Building Supply), featuring a complete selection of tools to suit any job and a wide selection of houseware items.",
+      { "title": "PAINT CENTER", "address" : "26 Kent Road South, Cornwall Bridge, CT 06754", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(860) 672-4000","logoUrl": "images/store4.png", "backgroundUrl": "images/back4.jpg", "id": 4, "hasStore": false, "description": "Discover Weed & Duryea of Cornwall Bridge (a division of Northeast Building Supply), featuring a complete selection of tools to suit any job and a wide selection of houseware items.",
       "linkColor" : " #a67733",
       "color" : "cornwall_lumber"
       },
-      { "title": "WINDOWS & DOORS", "address" : "700 Joline Ave, Long Branch, NJ 07740", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(732) 443-4695","logoUrl": "images/store5.png", "backgroundUrl": "images/back5.jpg", "id": 5, "hasStore": false, "description": "Distribution of premium-quality custom windows and doors, professional architectural resources, design showroom",
+      { "title": "WINDOWS & DOORS", "address" : "700 Joline Ave, Long Branch, NJ 07740", "email" : "contact@northeastbuildingsupply.com", "phoneNo" : "(732) 443-4695","logoUrl": "images/store5.png", "backgroundUrl": "images/back5.jpg", "id": 5, "hasStore": false, "description": "Distribution of premium-quality custom windows and doors, professional architectural resources, design showroom.",
       "linkColor" : " #47759a",
       "color" : "ABC"        
       },
@@ -107,7 +107,7 @@ export class StoreDets {
     if(this.storeId == 4){
       this.navCtrl.push(ImageGallery);
     } else{
-      this.navCtrl.push(ProductCategories, {"store_name" : this.title}, { animate: true, direction: 'forward' });
+      this.navCtrl.push(ProductCategories, this.stores[this.storeId], { animate: true, direction: 'forward' });
     }
   }
 

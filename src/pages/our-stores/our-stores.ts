@@ -19,7 +19,7 @@ export class OurStores {
   constructor(public navCtrl: NavController) {
     this.navCtrl = navCtrl;
     this.stores = [
-      {"title"  :"HOME CENTER \n PAINT - LUMBER YARD", "logoUrl" : "images/store1.png", "backgroundUrl" : "images/back1.jpg", "id" : 1, "hasStore" : true},
+      {"title"  :"HOME CENTER \n PAINT LUMBER YARD", "logoUrl" : "images/store1.png", "backgroundUrl" : "images/back1.jpg", "id" : 1, "hasStore" : true},
       {"title"  :"LUMBER YARD \n BUILDING MATERIALS", "logoUrl" : "images/store2.png", "backgroundUrl" : "images/back2.jpg", "id" : 2, "hasStore" : true},
       {"title"  :"LUMBER YARD \n BUILDING MATERIALS", "logoUrl" : "images/store3.png", "backgroundUrl" : "images/back3.jpg", "id" : 3, "hasStore" : false},
       {"title"  :"LUMBER YARD \n BUILDING MATERIALS", "logoUrl" : "images/store4.png", "backgroundUrl" : "images/back4.jpg", "id" : 4, "hasStore" : false},

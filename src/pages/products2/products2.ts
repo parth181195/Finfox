@@ -29,7 +29,7 @@ export class ProductsPage2 {
       },
      "LUMBER YARD" : { 
         "linkColor" : " #a67733",
-        "color" : "cornwall_lumber"
+        "color" : "green_color"
       },
      "KITCHEN CENTER" : { 
         "linkColor" : " #c7c4b7",

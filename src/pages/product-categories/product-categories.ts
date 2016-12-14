@@ -23,39 +23,44 @@ export class ProductCategories {
     this.navCtrl = navCtrl;
     this.params = params;
     this.util = util;
-    let colors = {
-     "WEED & DURYEA" : { 
+    this.stores = [
+       {
+        "store_name" : "WEED & DURYEA",
         "linkColor" : "#562421",
         "color" : "weed_duryea"
+      }, 
+       {
+        "store_name" : "LUMBER YARD",
+        "linkColor" : " #213d34",
+        "color" : "green_color"
       },
-     "LUMBER YARD" : { 
-        "linkColor" : " #a67733",
-        "color" : "cornwall_lumber"
-      },
-     "KITCHEN CENTER" : { 
+       {
+        "store_name" : "KITCHEN CENTER",
         "linkColor" : " #c7c4b7",
         "color" : "kitchen_center"
       },
-     "PAINT CENTER" : { 
+       {
+        "store_name" : "PAINT CENTER",
         "linkColor" : " #a67733",
         "color" : "cornwall_lumber"
       },
-     "WINDOWS & DOORS" : { 
+       {
+        "store_name" : "WINDOWS & DOORS",
         "linkColor" : " #47759a",
         "color" : "ABC"
-      }       
-    }    
+      }
+    ]
 
-    this.color = colors[this.params.get("store_name")].color;
+    this.color = this.stores[this.params.get("id") - 1]["color"];
 
   }
 
   ionViewDidLoad() {
-    this.categories = this.util.storeCategories[this.params.get("store_name")]
+    this.categories = this.util.storeCategories[this.stores[this.params.get("id") - 1]["store_name"]]
   }
 
   switchCategory(title){
-    this.navCtrl.push(ProductsPage2, {"selected_category" : title, "store_name" : this.params.get("store_name")}, {animate : true, direction : 'forward'})
+    this.navCtrl.push(ProductsPage2, {"selected_category" : title, "store_name" : this.stores[this.params.get("id") - 1]["store_name"]}, {animate : true, direction : 'forward'})
   }
 
 }
